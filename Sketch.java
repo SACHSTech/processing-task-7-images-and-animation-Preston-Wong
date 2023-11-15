@@ -15,8 +15,8 @@ public class Sketch extends PApplet {
   // location and speed variables for the circle
 	float floatX = 200; // 200 and 800 start
   float floatY = 800; // 730 and 475 end
-  float floatXSpeed = 10;
-  float floatYSpeed = 10;
+  float floatXSpeed = 5;
+  float floatYSpeed = -5;
 
   // location and speed variables for the image 
   float floatXPic = 0;
@@ -67,22 +67,21 @@ public class Sketch extends PApplet {
     ellipse(floatX, floatY,50, 50);
 
     // adjust the circle location 
-   // floatX = floatX + floatXSpeed;
-    //floatY = floatY + floatYSpeed;
+      floatX = floatX + floatXSpeed;
+      floatY = floatY + floatYSpeed;
 
     // detects if the circle has hit the edge of the window or not 
-    if (floatX >= width - 10) {
-      floatXSpeed = floatXSpeed * -1;
-    } else if (floatX <= 0) {
-      floatXSpeed = floatXSpeed * -1;
-    }
-
-    if (floatY >= height - 10) {
-      floatYSpeed = floatYSpeed * -1;
-    } else if (floatY <= 0) {
-      floatYSpeed = floatYSpeed * -1;
+    if (floatX <= 0) {
+      floatX = floatX * -1;
+    } else if (floatX >= width - 50) {
+      floatX = floatX * -1;
     }
     
+    if (floatY <= 0) {
+      floatY =floatY * -1;
+    } else if (floatY >= height - 50) {
+      floatY = floatY * -1;
+    }
   }
   
   // define other methods down here.
