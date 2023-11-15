@@ -9,18 +9,19 @@ import processing.core.PImage;
 
 public class Sketch extends PApplet {
 
-  PImage img;
+  PImage ImgBackground;
+  PImage ImgClouds;
 
   // location and speed variables for the circle
-	float floatX = 20;
-  float floatY = 10;
-  float floatXSpeed = 5;
-  float floatYSpeed = 5;
+	float floatX = 200; // 200 and 800 start
+  float floatY = 800; // 730 and 475 end
+  float floatXSpeed = 10;
+  float floatYSpeed = 10;
 
   // location and speed variables for the image 
   float floatXPic = 0;
-  float floatYPic = 0;
-  float floatXPicSpeed = 0;
+  float floatYPic = -100;
+  float floatXPicSpeed = 5;
   float floatYPicSpeed = 0;
 
   /**
@@ -28,7 +29,7 @@ public class Sketch extends PApplet {
    */
   public void settings() {
 	// put your size call here
-    size(1024, 1024);
+    size(1000, 1000);
   }
 
   /** 
@@ -36,7 +37,8 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    img = loadImage("Processing-Task-7.jpg");
+    ImgBackground = loadImage("Processing-Task-7.jpg");
+    ImgClouds = loadImage("Clouds-removebg-preview.png");
   }
 
   /**
@@ -45,15 +47,28 @@ public class Sketch extends PApplet {
   public void draw() {
 	  
     // prints background right before printout the the new circle location 
-    image(img,0,0);
+    image(ImgBackground,0,0);
+
+    // prints out the clousd 
+    image(ImgClouds, floatXPic, floatYPic);
+
+    // prints out the cloud and moves them from left to right
+    floatXPic = floatXPic + floatXPicSpeed ;
+
+    // changes the direction of the clouds when it hits the sides
+    if (floatXPic  < 0) {
+      floatXPicSpeed  = floatXPicSpeed  * -1;
+    } else if (floatXPic  > width - 475) {
+      floatXPicSpeed  = floatXPicSpeed  * -1;
+    }
 
     // prints out the circle 
-    fill(0,0,0);
-    ellipse(floatX, floatY,15, 15);
+    fill(255,165,0);
+    ellipse(floatX, floatY,50, 50);
 
     // adjust the circle location 
-    floatX = floatX + floatXSpeed;
-    floatY = floatY + floatYSpeed;
+   // floatX = floatX + floatXSpeed;
+    //floatY = floatY + floatYSpeed;
 
     // detects if the circle has hit the edge of the window or not 
     if (floatX >= width - 10) {
