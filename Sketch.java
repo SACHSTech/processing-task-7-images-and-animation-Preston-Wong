@@ -2,7 +2,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * Animates a shape in a set pattern with edge detection 
+ * shoots a bascketball into a hoop with clouds moving in the background 
  * @author Preston Wong
  *
  */
@@ -13,10 +13,10 @@ public class Sketch extends PApplet {
   PImage ImgClouds;
 
   // location and speed variables for the circle
-	float floatX = 200; // 200 and 800 start
-  float floatY = 800; // 730 and 475 end
+	float floatX = 730; // 200 and 800 start
+  float floatY = 475; // 730 and 475 end
   float floatXSpeed = 5;
-  float floatYSpeed = -5;
+  float floatYSpeed = 5;
 
   // location and speed variables for the image 
   float floatXPic = 0;
@@ -53,7 +53,7 @@ public class Sketch extends PApplet {
     image(ImgClouds, floatXPic, floatYPic);
 
     // prints out the cloud and moves them from left to right
-    floatXPic = floatXPic + floatXPicSpeed ;
+    floatXPic = floatXPic + floatXPicSpeed;
 
     // changes the direction of the clouds when it hits the sides
     if (floatXPic  < 0) {
@@ -62,27 +62,30 @@ public class Sketch extends PApplet {
       floatXPicSpeed  = floatXPicSpeed  * -1;
     }
 
-    // prints out the circle 
+    // prints out the bascketball
     fill(255,165,0);
+    noStroke();
     ellipse(floatX, floatY,50, 50);
 
     // adjust the circle location 
       floatX = floatX + floatXSpeed;
       floatY = floatY + floatYSpeed;
 
-    // detects if the circle has hit the edge of the window or not 
-    if (floatX <= 0) {
-      floatX = floatX * -1;
-    } else if (floatX >= width - 50) {
-      floatX = floatX * -1;
+    // detects if the ball has hit the hoop, and it it has, it cycles through some movements to get back to the starting position
+    if (floatX >= 730 && (floatY >= 475 && floatY < 900)) {
+      floatYSpeed = 5;
+      floatXSpeed = 0;
+    } else if (floatX >= 730 && floatY <= 900) {
+      floatYSpeed = 0;
+      floatXSpeed = -5;
+    } else if (floatX <= 100 && (floatY <= 900 && floatY >= 800)) {
+      floatXSpeed = 0;
+      floatYSpeed = -1;
+    } else if (floatX <= 100 && floatY <= 800) {
+      floatYSpeed = 0;
     }
+
     
-    if (floatY <= 0) {
-      floatY =floatY * -1;
-    } else if (floatY >= height - 50) {
-      floatY = floatY * -1;
-    }
+
   }
-  
-  // define other methods down here.
 }
