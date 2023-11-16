@@ -13,10 +13,10 @@ public class Sketch extends PApplet {
   PImage ImgClouds;
 
   // location and speed variables for the circle
-	float floatX = 730; // 200 and 800 start
-  float floatY = 475; // 730 and 475 end
-  float floatXSpeed = 5;
-  float floatYSpeed = 5;
+	float floatX = 465; // 200 and 800 start
+  float floatY = 800; // 730 and 475 end
+  float floatXSpeed = 1;
+  float floatYSpeed = 1;
 
   // location and speed variables for the image 
   float floatXPic = 0;
@@ -45,12 +45,11 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
-	  
     // prints background right before printout the the new circle location 
-    image(ImgBackground,0,0);
+   // image(ImgBackground,0,0);
 
     // prints out the clousd 
-    image(ImgClouds, floatXPic, floatYPic);
+   // image(ImgClouds, floatXPic, floatYPic);
 
     // prints out the cloud and moves them from left to right
     floatXPic = floatXPic + floatXPicSpeed;
@@ -68,9 +67,15 @@ public class Sketch extends PApplet {
     ellipse(floatX, floatY,50, 50);
 
     // adjust the circle location 
+    if (floatX <= 465) {
+      //floatX = floatX + floatXSpeed;
+      //floatY = floatY - (float) (0.0001 * Math.pow((-floatX + 550),2)); ;
+    } else if (floatX >= 465) {
       floatX = floatX + floatXSpeed;
-      floatY = floatY + floatYSpeed;
+      floatY = floatY + (float) (0.0001 * Math.pow(floatX - 550,2));
+    }
 
+      /*
     // detects if the ball has hit the hoop, and it it has, it cycles through some movements to get back to the starting position
     if (floatX >= 730 && (floatY >= 475 && floatY < 900)) {
       floatYSpeed = 5;
@@ -89,5 +94,6 @@ public class Sketch extends PApplet {
       floatYSpeed = 0;
       floatXSpeed = 0;
     }
+    */
   }
 }
