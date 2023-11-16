@@ -81,11 +81,13 @@ public class Sketch extends PApplet {
     } else if (floatX <= 100 && (floatY <= 900 && floatY >= 800)) {
       floatXSpeed = 0;
       floatYSpeed = -1;
-    } else if (floatX <= 100 && floatY <= 800) {
-      floatYSpeed = 0;
     }
-
     
 
+    // moves the ball in the parabolic shape for the shot
+    if (floatX <= 100 && floatY <= 800) {
+      floatYSpeed = 0;
+      floatXSpeed = 0;
+    }
   }
 }
