@@ -9,6 +9,7 @@ import processing.core.PImage;
 
 public class Sketch extends PApplet {
 
+  // image variables
   PImage ImgBackground;
   PImage ImgClouds;
 
@@ -45,13 +46,14 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
+
     // prints background right before printout the the new circle location 
     image(ImgBackground,0,0);
 
     // prints out the clousd 
     image(ImgClouds, floatXPic, floatYPic);
 
-    // prints out the cloud and moves them from left to right
+    // changes the location of the clouds 
     floatXPic = floatXPic + floatXPicSpeed;
 
     // changes the direction of the clouds when it hits the sides
@@ -66,14 +68,14 @@ public class Sketch extends PApplet {
     noStroke();
     ellipse(floatX, floatY,50, 50);
 
-  floatX = floatX + floatXSpeed;    
-  floatY = floatY + floatYSpeed;
+    // change the location of the ball 
+    floatX = floatX + floatXSpeed;    
+    floatY = floatY + floatYSpeed;
 
-    // adjust the circle location 
+    // adjust the ball location 
     if (floatX >= 320 && floatX <= 570 && floatY <= 901) {
       floatXSpeed = 1;
       floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 580),2));
- 
     } else if (floatX >= 570 && floatX <= 730) {
       floatYSpeed = (float) (0.0001 * Math.pow((-floatX + 580),2));
     } else if (floatY >= 475 && floatY < 890) {
@@ -87,4 +89,4 @@ public class Sketch extends PApplet {
       floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 580),2));
     }
   }
-  }
+}
