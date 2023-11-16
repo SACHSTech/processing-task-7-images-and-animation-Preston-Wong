@@ -30,7 +30,7 @@ public class Sketch extends PApplet {
    */
   public void settings() {
 	// put your size call here
-    size(1000, 1000);
+    size(950, 950);
   }
 
   /** 
@@ -73,15 +73,15 @@ public class Sketch extends PApplet {
     floatY = floatY + floatYSpeed;
 
     // adjust the ball location 
-    if (floatX >= 320 && floatX <= 570 && floatY <= 901) {
+    if (floatX >= 320 && floatX <= 570 && floatY <= 851) {
       floatXSpeed = 1;
-      floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 580),2));
+      floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 570),2));
     } else if (floatX >= 570 && floatX <= 730) {
-      floatYSpeed = (float) (0.0001 * Math.pow((-floatX + 580),2));
-    } else if (floatY >= 475 && floatY < 890) {
+      floatYSpeed = (float) (0.0001 * Math.pow((-floatX + 570),2));
+    } else if (floatY >= 475 && floatY < 840) {
       floatYSpeed = 5;
       floatXSpeed = 0;
-    } else if (floatX >= 320 && floatY >= 890) {
+    } else if (floatX >= 320 && floatY >= 840) {
       floatYSpeed = 0;
       floatXSpeed = -5;
     } else if (floatX <= 320) {
