@@ -14,7 +14,7 @@ public class Sketch extends PApplet {
 
   // location and speed variables for the circle
 	float floatX = 320; // 320, 800
-  float floatY = 800; // 730 and 475 end
+  float floatY = 900; // 730 and 475 end
   float floatXSpeed = 1;
   float floatYSpeed = 1;
 
@@ -70,19 +70,21 @@ public class Sketch extends PApplet {
   floatY = floatY + floatYSpeed;
 
     // adjust the circle location 
-    if ( floatX >= 320 && floatX <= 570 && floatY <= 900) {
-      floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 570),2));
+    if (floatX >= 320 && floatX <= 570 && floatY <= 901) {
+      floatXSpeed = 1;
+      floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 580),2));
+ 
     } else if (floatX >= 570 && floatX <= 730) {
-      floatYSpeed = (float) (0.0001 * Math.pow((-floatX + 570),2));
-    } else if (floatX >= 730 && floatY >= 475 && floatY < 900) {
+      floatYSpeed = (float) (0.0001 * Math.pow((-floatX + 580),2));
+    } else if (floatY >= 475 && floatY < 890) {
       floatYSpeed = 5;
       floatXSpeed = 0;
-    } else if (floatX >= 730 && floatY >= 900) {
+    } else if (floatX >= 320 && floatY >= 890) {
       floatYSpeed = 0;
       floatXSpeed = -5;
-    } else if (floatX <= 320 && floatY <= 800 ) {
-      floatXSpeed = 0;
-     floatYSpeed = -1;
+    } else if (floatX <= 320) {
+      floatXSpeed = 1;
+      floatYSpeed = (float) -(0.0001 * Math.pow((-floatX + 580),2));
     }
   }
   }
